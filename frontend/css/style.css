@@ -1,0 +1,324 @@
+/* ==========================================================================
+   LifePulse - Emergency Blood Alert System Stylesheet
+   Theme: High-Contrast Medical & Hospital Emergency UI
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties (Theme Tokens)
+   Allows easy global color and style management
+   -------------------------------------------------------------------------- */
+:root {
+    /* Brand & Emergency Color Palette */
+    --clr-crimson: #dc2626;         /* Primary Emergency Red */
+    --clr-crimson-hover: #b91c1c;   /* Darker Red for Button Hover */
+    --clr-crimson-light: #fee2e2;   /* Soft Red for Alert Badges */
+    --clr-crimson-glow: rgba(220, 38, 38, 0.4);
+
+    --clr-navy-dark: #0b132b;       /* Dark Navy for Header & Navbar */
+    --clr-navy-card: #1c2541;       /* Deep Slate Blue for Hero Card */
+    --clr-navy-soft: #243054;       /* Soft Slate for Card Dividers */
+
+    --clr-teal: #0ea5e9;            /* Clinical Cyan / Secondary */
+    --clr-success: #16a34a;         /* Verified Green */
+    --clr-bg-light: #f8fafc;        /* Soft Cool Gray Page Background */
+    --clr-text-main: #1e293b;       /* Primary Typography Slate */
+    --clr-text-muted: #64748b;      /* Secondary Text */
+
+    /* Typography */
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Transitions & Shadows */
+    --transition-fast: all 0.2s ease-in-out;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-elevated: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   2. Global Typography & Base Defaults
+   -------------------------------------------------------------------------- */
+body {
+    font-family: var(--font-body);
+    color: var(--clr-text-main);
+    background-color: var(--clr-bg-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+}
+
+/* Smooth anchor scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --------------------------------------------------------------------------
+   3. Top Emergency Helpline Bar
+   -------------------------------------------------------------------------- */
+.top-emergency-bar {
+    background-color: #7f1d1d; /* Deep Crimson Alert Bar */
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+}
+
+/* Pulsating Live Status Dot */
+.live-dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #22c55e; /* Green for Live active status */
+}
+
+.pulse-beacon {
+    animation: beaconPulse 1.8s infinite ease-out;
+}
+
+@keyframes beaconPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   4. Navbar Styles
+   -------------------------------------------------------------------------- */
+.bg-dark-navy {
+    background-color: var(--clr-navy-dark) !important;
+}
+
+.brand-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(220, 38, 38, 0.15);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.brand-drop {
+    font-size: 1.25rem;
+    animation: dripSway 3s ease-in-out infinite;
+}
+
+@keyframes dripSway {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px) scale(1.05); }
+}
+
+.brand-title {
+    font-size: 1.35rem;
+    color: #ffffff;
+}
+
+.nav-link {
+    color: #cbd5e1 !important;
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Hero Section
+   -------------------------------------------------------------------------- */
+.hero-section {
+    background: linear-gradient(135deg, #0b132b 0%, #1e1b4b 60%, #31102f 100%);
+    position: relative;
+    border-bottom: 2px solid rgba(220, 38, 38, 0.3);
+}
+
+.hero-heading {
+    line-height: 1.15;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, #f87171, #fca5a5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bg-navy-card {
+    background-color: var(--clr-navy-card);
+}
+
+.bg-dark-soft {
+    background-color: var(--clr-navy-soft);
+}
+
+/* Pulsing Primary Emergency Button */
+.pulse-btn {
+    position: relative;
+    transition: var(--transition-smooth);
+    animation: glowPulse 2.5s infinite;
+}
+
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 0 0 var(--clr-crimson-glow);
+    }
+    70% {
+        box-shadow: 0 0 0 14px rgba(220, 38, 38, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   6. Emergency Form & Cards
+   -------------------------------------------------------------------------- */
+.emergency-card {
+    border-radius: 14px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-card);
+}
+
+.emergency-card:hover {
+    box-shadow: var(--shadow-elevated);
+}
+
+.card-header {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.form-label {
+    font-size: 0.9rem;
+    color: #334155;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1.5px solid #cbd5e1;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.95rem;
+    transition: var(--transition-fast);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--clr-crimson);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+.input-group-text {
+    border: 1.5px solid #cbd5e1;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+}
+
+.input-group .form-control {
+    border-left: none;
+}
+
+.alert-submit-btn {
+    border-radius: 10px;
+    background-color: var(--clr-crimson);
+    border: none;
+    transition: var(--transition-smooth);
+}
+
+.alert-submit-btn:hover {
+    background-color: var(--clr-crimson-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(220, 38, 38, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   7. Matching Results Display Cards (Hospitals & Donors)
+   -------------------------------------------------------------------------- */
+.result-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #ffffff;
+    padding: 1rem;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.result-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--clr-crimson);
+}
+
+.result-card.hospital-card::before {
+    background-color: var(--clr-teal);
+}
+
+.result-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+    border-color: #cbd5e1;
+}
+
+.blood-badge {
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.35rem 0.65rem;
+    border-radius: 6px;
+    letter-spacing: 0.03em;
+}
+
+.blood-badge-danger {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+}
+
+/* --------------------------------------------------------------------------
+   8. Stats & KPI Summary Cards
+   -------------------------------------------------------------------------- */
+.stat-card {
+    border-radius: 12px;
+    border: 1px solid #f1f5f9;
+    transition: var(--transition-smooth);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+}
+
+.stat-icon-wrapper {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .hero-heading {
+        font-size: 2rem;
+    }
+    
+    .emergency-card .card-body {
+        padding: 1.25rem;
+    }
+}

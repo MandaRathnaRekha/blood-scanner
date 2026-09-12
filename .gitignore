@@ -1,0 +1,66 @@
+# ===================================================================
+# LifePulse - Emergency Blood Alert System
+# .gitignore for Java Spring Boot (Maven) + HTML/CSS/JS Project
+# ===================================================================
+
+# 1. Compiled Java Class Files & Packages
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# 2. Maven Build Output
+backend/target/
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# 3. IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.idea_modules/
+
+# 4. Eclipse & VS Code
+.classpath
+.project
+.settings/
+.metadata/
+bin/
+.vscode/
+
+# 5. Log Files & Crash Dumps
+*.log
+logs/
+hs_err_pid*
+replay_pid*
+
+# 6. Operating System Artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# 7. Environment & Sensitive Password Configs
+# Do not commit real production database passwords or credentials
+.env
+.env.*
+!*.env.example
+application-secret.properties
+application-local.properties
+application-prod.properties
+*password*
+*credentials*
