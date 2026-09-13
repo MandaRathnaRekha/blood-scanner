@@ -9,13 +9,13 @@
 // 1. Configuration & API Endpoints
 // ==========================================================================
 const CONFIG = {
-    // Dynamic integration: reads from window.APP_CONFIG if available, else falls back to localhost
+    // Dynamic integration: reads from window.APP_CONFIG if available, else falls back to Railway backend
     USE_BACKEND_API: (typeof window !== "undefined" && window.APP_CONFIG && typeof window.APP_CONFIG.USE_BACKEND_API !== "undefined")
         ? window.APP_CONFIG.USE_BACKEND_API 
         : true,
     API_BASE_URL: (typeof window !== "undefined" && window.APP_CONFIG && window.APP_CONFIG.API_BASE_URL)
         ? window.APP_CONFIG.API_BASE_URL 
-        : "http://localhost:8080/api"
+        : "https://blood-scanner-production.up.railway.app/api"
 };
 
 // ==========================================================================

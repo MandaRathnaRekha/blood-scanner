@@ -8,8 +8,8 @@
 window.APP_CONFIG = {
     // Dynamically resolves API URL:
     // 1. Checks localStorage ('LIFEPULSE_API_URL') for quick runtime switching / testing
-    // 2. Falls back to window environment or default local Spring Boot backend
-    API_BASE_URL: window.localStorage.getItem("LIFEPULSE_API_URL") || "http://localhost:8080/api",
+    // 2. Falls back to window environment or deployed Railway Spring Boot backend
+    API_BASE_URL: window.localStorage.getItem("LIFEPULSE_API_URL") || "https://blood-scanner-production.up.railway.app/api",
     
     // Flag to enable live REST fetch() requests against the Spring Boot backend
     USE_BACKEND_API: true,
