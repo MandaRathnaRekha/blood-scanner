@@ -66,6 +66,29 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * Handles unsupported HTTP methods (e.g., trying to PATCH or TRACE an endpoint).
+     * Returns standard HTTP 405 Method Not Allowed.
+     */
+    @ExceptionHandler(org.springframework.web.HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<ApiResponse<Void>> handleMethodNotSupported(
+            org.springframework.web.HttpRequestMethodNotSupportedException ex) {
+        logger.warn("HTTP method not supported: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED)
+                .body(ApiResponse.error("HTTP method '" + ex.getMethod() + "' is not supported for this endpoint."));
+    }
+
+    /**
+     * Handles 404 resource not found cleanly.
+     */
+    @ExceptionHandler(org.springframework.web.servlet.resource.NoResourceFoundException.class)
+    public ResponseEntity<ApiResponse<Void>> handleNoResourceFound(
+            org.springframework.web.servlet.resource.NoResourceFoundException ex) {
+        logger.warn("Resource route not found: {}", ex.getResourcePath());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(ApiResponse.error("Endpoint resource not found: /" + ex.getResourcePath()));
+    }
+
+    /**
      * Fallback handler for any unexpected system or database errors.
      * Prevents raw stack traces from leaking to public clients.
      */

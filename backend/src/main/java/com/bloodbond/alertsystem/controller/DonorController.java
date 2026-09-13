@@ -16,7 +16,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/donors")
-@CrossOrigin(origins = "*")
 public class DonorController {
 
     private final DonorService donorService;

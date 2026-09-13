@@ -25,7 +25,6 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/alerts")
-@CrossOrigin(origins = "*") // Allows frontend running from any origin or file:// to connect
 public class AlertController {
 
     private static final Logger logger = LoggerFactory.getLogger(AlertController.class);
@@ -80,13 +79,22 @@ public class AlertController {
     }
 
     /**
+     * REST Endpoint: GET /api/alerts
+     * Default root endpoint: fetches all currently active emergency broadcasts.
+     */
+    @GetMapping
+    public ResponseEntity<ApiResponse<List<Alert>>> getAllActiveAlerts() {
+        List<Alert> activeAlerts = alertService.getActiveAlerts();
+        return ResponseEntity.ok(ApiResponse.success("Active emergency broadcasts fetched.", activeAlerts));
+    }
+
+    /**
      * REST Endpoint: GET /api/alerts/active
      * Fetches all currently active emergency broadcasts.
      */
     @GetMapping("/active")
     public ResponseEntity<ApiResponse<List<Alert>>> getActiveAlerts() {
-        List<Alert> activeAlerts = alertService.getActiveAlerts();
-        return ResponseEntity.ok(ApiResponse.success("Active emergency broadcasts fetched.", activeAlerts));
+        return getAllActiveAlerts();
     }
 
     /**
